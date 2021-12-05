@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style type="text/css">
+*{
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
+body {
+ background-image: url("https://cdn.pixabay.com/photo/2016/09/13/19/31/texture-1668079_960_720.jpg");
+ background-repeat: no-repeat;
+ background-position: center;
+ background-size: cover;
+}
+.jumbotron{
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow-y: hidden;
+	background-image: url("https://cdn.pixabay.com/photo/2013/07/13/12/08/background-159244_960_720.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+.jumbotron h1{
+	overflow-y: hidden;
+	padding-bottom: 20px;
+}
+img{
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-position: center;
+}
+.btn{
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	margin-left: 30px;
+}
+.footer1 {
+	position: relative;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #efefef;
+	text-align: center;
+}
+.card-columns{
+	overflow-y: hidden;
+}
+.h5{
+	overflow: hidden;
+}
+
+.card-columns{
+	overflow-y: hidden;
+}.card-img-top{
+	overflow-y: hidden;
+}
+.card{
+	overflow-y: hidden;
+}
+.card-body{
+	overflow-y: hidden;
+}
+.card-title{
+	overflow: hidden;
+}
+h6{
+	overflow: hidden;
+}
+</style>
+
+
+</head>
+<body>
+	<div class="bg">
+	<div class="jumbotron">
+		<!-- <img src="https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg" class="bgimage1"> -->
+		<h1 class="text-center">News Aggregator</h1>
+	</div>
+</div>
+<div class="main_body">
+		<form method="POST" action="{% url 'scrape' %}">
+			{% csrf_token %}
+			<button type="submit" class="btn btn-success text-center">Get my morning news</button>
+		</form>
+  <div class="card-columns" style="padding: 10px; margin: 20px;">
+	{% for object in object_list %}
+	<div class="card" style="width: 18rem;border:5px black solid;">
+  <img class="card-img-top" src = "{{ object.image }}">
+  <div class="card-body">
+    <h5 class="card-title"><div class="card-body">
+      <a href="{{object.url}}"><h5 class="card-title">{{object.title}}</h5></a>
+    </div></h5>
+		<h6>Click the link for more info</h6>
+	</div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+<!-- <footer class="footer1">&#169; Akshaya Shrey Aman. All rights reserved. </footer> -->
+<div class="footer1">&#169; Akshaya Shrey Aman. All rights reserved. </div>
+	<script
+	src="http://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
