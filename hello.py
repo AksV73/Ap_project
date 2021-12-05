@@ -6,7 +6,9 @@ from bs4 import BeautifulSoup
 dis = requests.get(" https://www.thehindu.com/")
 dis_soup = BeautifulSoup(dis.content, 'html5lib')
 dis_headings = dis_soup.find_all('div',{'class':'story-card'})
-
+news_title = []
+news_images = []
+news_url = []
 #print(dis_headings)
 for article in dis_headings:
     main = article.find_all('a')[0]    
@@ -22,11 +24,24 @@ for article in dis_headings:
 
     title1 = title.split("\n")
     #news_title =  dis_soup.findAll("h2")[0].renderContents()
-    #print(title)
-    ntitle = re.findall(r'IST>(.*?)</"a',title)
+    #print(len(title1))
+    link = str(link)
+    print(link[2:-3])
+    image = str(image)
+    print(image[2:-2])
     #title = title.split()
-    print(title1[-3])
+    if len(title1) != 1:
+        news_title.append(title1[2])
+    news_images.append(image)
+    news_url.append(link)
     #print(main)
     #print(link)
 
-      
+
+print("The titles are:")
+#print(news_title)
+print("The urls are:")
+#print(news_url)
+print("The images are:")
+#print(news_images)
+        
